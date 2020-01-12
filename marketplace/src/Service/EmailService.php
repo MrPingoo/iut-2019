@@ -19,12 +19,12 @@ class EmailService
         $this->em = $em;
     }
 
-    public function sendResetPwd($subject, $from, $to, $args) {
+    public function sendRegistrationMail($subject, $from, $to, $args) {
         $message = (new \Swift_Message($subject))
             ->setFrom($from)
             ->setTo($to)
             ->setBody(
-                $this->renderFactureTemplate($args),
+                $this->renderRegistrationTemplate($args),
                 'text/html'
             )
         ;
@@ -32,10 +32,10 @@ class EmailService
         $this->mailer->send($message);
     }
 
-    public function renderFactureTemplate($args)
+    public function renderRegistrationTemplate($args)
     {
         return $this->templating->render(
-            'email/reset_pwd.html.twig',
+            'emails/registration.html.twig',
             $args
         );
     }

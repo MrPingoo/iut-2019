@@ -1,0 +1,29 @@
+{% trans_default_domain 'messages' %}
+{% block subject %}
+    {%- autoescape false -%}
+
+    {%- endautoescape -%}
+{% endblock %}
+
+{% block body_text %}
+{% endblock %}
+
+{% block body_html %}
+
+    <!DOCTYPE html>
+    <html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no">
+        <link rel="stylesheet" href="{{ app.request.getSchemeAndHttpHost() }}/assets/css/bootstrap.min.css" >
+        <link href="https://fonts.googleapis.com/css?family=Nunito:400,700,800&display=swap" rel="stylesheet">
+    </head>
+    <body>
+
+    <div class="container p-4">
+        <h1>Bienvenue {{ user.email }}</h1>
+    </div>
+
+    </body>
+    </html>
+{% endblock %}
